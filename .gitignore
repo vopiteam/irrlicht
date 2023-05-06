@@ -2,9 +2,9 @@ CMakeFiles
 CMakeCache.txt
 cmake_install.cmake
 install_manifest.txt
-IrrlichtMtConfig.cmake
-IrrlichtMtConfigVersion.cmake
-IrrlichtMtTargets.cmake
+IrrlichtKWConfig.cmake
+IrrlichtKWConfigVersion.cmake
+IrrlichtKWTargets.cmake
 Makefile
 libs/*
 *.so*

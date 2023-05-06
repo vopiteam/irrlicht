@@ -48,12 +48,12 @@ include(CheckCXXSourceCompiles)
 set(CMAKE_REQUIRED_INCLUDES ${PROJECT_SOURCE_DIR}/include)
 unset(REVISION_SANITY_CHECK CACHE)
 check_cxx_source_compiles("#include <IrrCompileConfig.h>\n\
-#if IRRLICHT_VERSION_MT_REVISION != ${IRRLICHTMT_REVISION}\n\
+#if IRRLICHT_VERSION_KW_REVISION != ${IRRLICHTKW_REVISION}\n\
 #error\n\
 #endif\n\
 int main() {}" REVISION_SANITY_CHECK)
 if(NOT REVISION_SANITY_CHECK)
-	message(FATAL_ERROR "IrrlichtMt revision number mismatches between CMake and headers.")
+	message(FATAL_ERROR "IrrlichtKW revision number mismatches between CMake and headers.")
 endif()
 
 # Required libs
@@ -279,51 +279,51 @@ add_library(IRRGUIOBJ OBJECT
 
 # Library
 
-add_library(IrrlichtMt)
+add_library(IrrlichtKW)
 foreach(object_lib
 	IRRMESHOBJ IRROBJ IRRVIDEOOBJ
 	IRRIOOBJ IRROTHEROBJ IRRGUIOBJ)
 	# Set include directories for object library compilation
 	target_include_directories(${object_lib} PRIVATE ${link_includes})
 	# Add objects from object library to main library
-	target_sources(IrrlichtMt PRIVATE $<TARGET_OBJECTS:${object_lib}>)
+	target_sources(IrrlichtKW PRIVATE $<TARGET_OBJECTS:${object_lib}>)
 endforeach()
 
 # Alias target provides add_submodule compatibility
-add_library(IrrlichtMt::IrrlichtMt ALIAS IrrlichtMt)
+add_library(IrrlichtKW::IrrlichtKW ALIAS IrrlichtKW)
 
-target_include_directories(IrrlichtMt
+target_include_directories(IrrlichtKW
 	PUBLIC
 		"$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/>"
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
-		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/irrlichtmt>"
+		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/irrlichtkw>"
 	PRIVATE
 		${link_includes}
 )
 
-target_link_libraries(IrrlichtMt PRIVATE ${link_libs})
+target_link_libraries(IrrlichtKW PRIVATE ${link_libs})
 
 # Propagate static library flag to lib users, only needed for Windows
 if(NOT BUILD_SHARED_LIBS)
-	target_compile_definitions(IrrlichtMt INTERFACE _IRR_STATIC_LIB_)
+	target_compile_definitions(IrrlichtKW INTERFACE _IRR_STATIC_LIB_)
 endif()
 
-set_target_properties(IrrlichtMt PROPERTIES
+set_target_properties(IrrlichtKW PROPERTIES
 	VERSION ${PROJECT_VERSION}
 )
 
 if(WIN32)
-	set_target_properties(IrrlichtMt PROPERTIES PREFIX "") # for DLL name
+	set_target_properties(IrrlichtKW PROPERTIES PREFIX "") # for DLL name
 endif()
 
 # Installation of library
 if(ANDROID)
-	set(INSTALL_TARGETS IrrlichtMt native_app_glue)
+	set(INSTALL_TARGETS IrrlichtKW native_app_glue)
 else()
-	set(INSTALL_TARGETS IrrlichtMt)
+	set(INSTALL_TARGETS IrrlichtKW)
 endif()
 
 install(TARGETS ${INSTALL_TARGETS}
-	EXPORT IrrlichtMt-export
+	EXPORT IrrlichtKW-export
 	DESTINATION "${CMAKE_INSTALL_LIBDIR}"
 )

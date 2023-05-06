@@ -16,5 +16,5 @@ foreach(exname IN ITEMS ${IRREXAMPLES})
 		${CMAKE_SOURCE_DIR}/include
 		${CMAKE_CURRENT_SOURCE_DIR}/${exname}
 	)
-	target_link_libraries(${exname} IrrlichtMt)
+	target_link_libraries(${exname} IrrlichtKW)
 endforeach()

@@ -1,10 +1,10 @@
-IrrlichtMt version 1.9
+IrrlichtKW version 1.9
 ======================
 
 The Irrlicht Engine is an open source realtime 3D engine written in C++.
 
-This is a fork by the [Minetest](https://github.com/minetest) developers that was stripped-down and customized specifically for use in Minetest.
-It is intentionally not compatible to upstream and is planned to be eventually absorbed into Minetest.
+This is a fork by the [Kawaii World](https://github.com/vopiman) developers that was stripped-down and customized specifically for use in Kawaii World.
+It is intentionally not compatible to upstream and is planned to be eventually absorbed into Kawaii World.
 
 Build
 -----
@@ -18,17 +18,17 @@ The following libraries are required to be installed:
 * on Unix: X11
 
 Aside from standard search options (`ZLIB_INCLUDE_DIR`, `ZLIB_LIBRARY`, ...) the following options are available:
-* `BUILD_SHARED_LIBS` (default: `ON`) - Build IrrlichtMt as a shared library
+* `BUILD_SHARED_LIBS` (default: `ON`) - Build IrrlichtKW as a shared library
 * `BUILD_EXAMPLES` (default: `OFF`) - Build example applications
 
 e.g. on a Linux system you might want to build for local use like this:
 
-	git clone https://github.com/minetest/irrlicht
+	git clone https://github.com/vopiteam/irrlicht
 	cd irrlicht
 	cmake . -DBUILD_SHARED_LIBS=OFF
 	make -j$(nproc)
 
-This will put an IrrlichtMtTargets.cmake file into the cmake directory in the current build directory, and it can then be imported from another project by pointing `find_package()` to the build directory, or by setting the `CMAKE_PREFIX_PATH` variable to that same path.
+This will put an IrrlichtKWTargets.cmake file into the cmake directory in the current build directory, and it can then be imported from another project by pointing `find_package()` to the build directory, or by setting the `CMAKE_PREFIX_PATH` variable to that same path.
 
 on Windows system:
 
@@ -40,7 +40,7 @@ After you successfully built vcpkg you can easily install the required libraries
 	
 Run the following script in PowerShell:
 
-	git clone https://github.com/minetest/irrlicht
+	git clone https://github.com/vopiteam/irrlicht
 	cd irrlicht
 	cmake -B build -G "Visual Studio 17 2022" -A "Win64" -DCMAKE_TOOLCHAIN_FILE=[vcpkg-root]/scripts/buildsystems/vcpkg.cmake -DBUILD_SHARED_LIBS=OFF
 	cmake --build build --config Release
